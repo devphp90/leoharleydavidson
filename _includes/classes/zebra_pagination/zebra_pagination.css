@@ -1,0 +1,34 @@
+/* ATTRIBUTES FOR THE CONTAINER (THIS HOW WE CENTER EVERYTHING)
+----------------------------------------------------------------------------------------------------------------------*/
+.Zebra_Pagination                       { overflow: hidden; float: right;}
+.Zebra_Pagination ul                    { list-style-type: none; margin: 0; padding: 0; }
+.Zebra_Pagination li                    { float: left;  }
+
+/* COMMON ATTRIBUTES FOR ALL THE LINKS
+----------------------------------------------------------------------------------------------------------------------*/
+.Zebra_Pagination a                     { padding: 4px; color: #333; text-decoration: none; margin: 0 2px; display: block; float: left; }
+.Zebra_Pagination a:hover               {
+	
+	color: #ccc !important;
+}
+
+/* "NEXT PAGE" AND "PREVIOUS PAGE" LINKS
+----------------------------------------------------------------------------------------------------------------------*/
+.Zebra_Pagination a.navigation          { overflow: hidden; background-repeat: no-repeat }
+.Zebra_Pagination a.previous            { background-image: url(larrow.png); background-position: left center; padding-left: 25px }
+.Zebra_Pagination a.previous:hover, .Zebra_Pagination a.next:hover            { background-color:transparent !important; color:#CCC !important; }
+.Zebra_Pagination a.next                { background-image: url(rarrow.png); background-position: right center; padding-right: 25px }
+.Zebra_Pagination a.disabled            { filter: alpha(opacity=20); -khtml-opacity: 0.2; -moz-opacity: 0.2; opacity: 0.2 }
+.Zebra_Pagination a.disabled:hover      { background-color: inherit; color: inherit !important; cursor:default !important; }
+
+/* hack for transparent borders in IE6 */
+*html .Zebra_Pagination a.navigation    { border-color: #000001; filter: chroma(color=#000001) }
+
+/* CURRENT PAGE
+----------------------------------------------------------------------------------------------------------------------*/
+.Zebra_Pagination a.current,
+.Zebra_Pagination a.current:hover       { color: #F00 }
+
+/* THE "..." SEPARATOR
+----------------------------------------------------------------------------------------------------------------------*/
+.Zebra_Pagination span                  { color: #666; margin-right: 2px; display: block; float: left; padding: 8px 4px }

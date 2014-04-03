@@ -1,0 +1,63 @@
+section .commun_header_container, section.box-news .col-news .picto-leo-tab, .picto-leo, section .box-fb {display:none;}
+
+
+section .grid-service li {width:100%;height:auto;}
+section .grid-service li img {height: auto;width: 100%;}
+section .grid-service li .visu {width:70px;height:auto;}
+
+section #frm-inscription .lab-insc {width: 38%;font-size: 22px;margin-right: 2.3%; margin-left: 7.5%;margin-top:59px;}
+section #frm-inscription .col-desc {width:48%;font-size: 13px;}
+section #frm-inscription .col-desc {padding-top: 48px;}
+
+section #frm-inscription .input-txt {width: 35.6%;margin-left:13.3%;}
+section #frm-inscription div {clear: both;padding: 5px 0 0;}
+
+/*::  Section news  ::*/
+.picto-leo-mobile {display:block;width: 54.4%;float:left;}
+section.box-news {width:100%;}
+
+section.box-news .box-right h2 {width:auto;margin-right:7.8%;}
+section.box-news .col-news div.box-right {width:44.8%;float: left;}
+section.box-news h2 {float: right;width:34.2%;}
+section.box-news h2 span {text-align: right;right: 18px;}
+.box-news h2 img {margin-left:0;width:100%;}
+section.box-news .col-news + div {margin:1px 0 0;}
+section.box-news .col-news .picto-leo-tab {float:left;}
+section.box-news .col-news .list-news {width:91.3%;margin: 0 auto;}
+section.box-news .col-news .list-news li {padding: 30px 40px 36px 19px;background-size: 100% auto;}
+
+section.box-news .col-news div.box-right .link  {right:22px;}
+section .grid-service li b {font}
+section .grid-service li > a > div {margin-left:65px;}
+
+
+footer .header .col-adr {display:none;}
+
+section.toto {display:none;} 
+
+footer .header {height:auto;padding: 29px 0 33px;overflow: hidden;}
+footer .header .box-utils .gmap a {display:none;}
+footer .header .box-utils {margin-left:9.5%;margin-top: 34px;width:90%;}
+footer .footer .col-adr {display:none;}
+footer .header .box-utils .gmap .col-adr {
+	display:block;
+	font-size:20px;
+	line-height: 21px;
+	color:#4a4331;
+	font-family: 'SourceSansPro-ExtraLight';
+}
+footer .header .box-utils .gmap .col-adr strong {font-family: 'SourceSansPro-ExtraLight';color:#4a4331;font-size: 20px;}
+footer .footer {padding:43px 0 0;height: 200px;text-align: center;}
+footer .footer .box-logotab {
+    display: block;
+    width: 100%;
+}
+footer .footer .box-logotab img {
+	height:122px;
+    width: 126px;
+}
+ul.grid-service {padding:0;}
+section .grid-service li {padding:0}
+section .grid-service li + li {margin:0;}
+section .grid-service li > a > div {margin:20px 0 0 0;}
+section.box-news .col-news div.box-right .link {width:180px;left:auto;right:20px;}

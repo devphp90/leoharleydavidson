@@ -1,0 +1,1 @@
+<div id="dialog" title="<?php echo language('_include/template/review', 'TITLE_WINDOW');?>" style="display:none"></div>

@@ -1,0 +1,49 @@
+ErrorDocument 404 /404.php
+
+RewriteEngine On
+# Dossier pour utiliser le rewrite
+RewriteBase /
+
+# RewriteCond %{HTTP_HOST} !^www\.(.*)$
+# RewriteRule ^(.*)$ "http\:\/\/www\.%{HTTP_HOST}%{REQUEST_URI}" [R=301,L]
+
+# if https is off and we are in the cart, redirect to https
+#RewriteCond %{HTTPS} off
+#RewriteCond %{REQUEST_URI} ^/cart/?.*$ [OR]
+#RewriteCond %{REQUEST_URI} ^/admin/?.*$ [OR]
+#RewriteCond %{REQUEST_URI} ^/account/?.*$ 
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+# if https is on and we are not in the cart anymore
+#RewriteCond %{HTTPS} on
+#RewriteCond %{REQUEST_URI} !^/cart/?.*$ 
+#RewriteCond %{REQUEST_URI} !^/account/?.*$ 
+#RewriteCond %{REQUEST_URI} !^/admin/?.*$ 
+#RewriteCond %{REQUEST_URI} !^/_css/?.*$ 
+#RewriteCond %{REQUEST_URI} !^/_images/?.*$ 
+#RewriteCond %{REQUEST_URI} !^/_includes/?.*$ 
+#RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI}
+ 
+
+RewriteRule ^([a-z]{2})/catalog/([0-9a-z-_\s/]+)$ catalog.php?_lang=$1&alias=$2 [QSA,NC,L]
+RewriteRule ^([a-z]{2})/product/([0-9a-z-_\s]+)$ product.php?_lang=$1&alias=$2 [QSA,NC,L]
+RewriteRule ^([a-z]{2})/page/([0-9a-z-_\s]+)$ page.php?_lang=$1&alias=$2 [QSA,NC,L]
+RewriteRule ^([a-z]{2})/featured$ search.php?_lang=$1&name_filter=featured [QSA,NC,L]
+RewriteRule ^([a-z]{2})/on-sale$ search.php?_lang=$1&name_filter=on-sale [QSA,NC,L]
+RewriteRule ^([a-z]{2})/new-products$ search.php?_lang=$1&name_filter=new-products [QSA,NC,L]
+RewriteRule ^([a-z]{2})/top-sellers$ search.php?_lang=$1&name_filter=top-sellers [QSA,NC,L]
+RewriteRule ^([a-z]{2})/search$ search.php?_lang=$1 [QSA,NC,L]
+RewriteRule ^([a-z]{2})/news/?$ news.php?_lang=$1 [QSA,NC,L]
+RewriteRule ^([a-z]{2})/news/([0-9a-z-_\s]+)$ news.php?_lang=$1&alias=$2 [QSA,NC,L]
+RewriteRule ^account/play-video.mp4$ account/play-video.php [QSA,NC,L]
+
+RewriteCond %{QUERY_STRING} !^(.*)?_lang=([a-z]{2})(.*)?$
+RewriteRule ^([a-z]{2})(/(.*))?$ /$2?_lang=$1 [QSA,NC]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [QSA,NC,L]
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f 
+#RewriteRule ^(.*)$ /404.php [L]
