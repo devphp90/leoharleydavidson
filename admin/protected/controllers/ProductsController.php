@@ -530,6 +530,9 @@ class ProductsController extends Controller
 				$model->id_tax_group = $product->id_tax_group;	
 				$model->brand = $product->brand;	
 				$model->model = $product->model;	
+				$model->year = $product->year;	
+				$model->mileage = $product->mileage;	
+				$model->color = $product->color;	
 				$model->used = $product->used;	
 				$model->featured = $product->featured;	
 				$model->active = $product->active;

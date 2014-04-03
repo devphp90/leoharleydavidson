@@ -9,6 +9,9 @@ return array (
  'LABEL_BRAND' => 'Marque',
  'LABEL_RETAIL_PRICE' => 'Prix de détail',
  'LABEL_MODEL' => 'Modèle',
+ 'LABEL_YEAR' => 'Ann�e',
+ 'LABEL_MILEAGE' => 'Kilom�trage',
+ 'LABEL_COLOR' => 'Couleur',
  'LABEL_DISPLAY_ON' => 'Affichez ce produit à partir de :',
  
  'LABEL_USER_DEFINED_QTY_DESCRIPTION' => 'Si vous sélectionnez oui, le client sera en mesure d\'entrer la quantité désirée pour chacun des produits.<br />Remarque : Pour bénéficier de la remise, tous les produits et les quantités requises doivent répondre aux conditions.',

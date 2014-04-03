@@ -10,6 +10,9 @@ class ProductsForm extends CFormModel
 	public $brand; //brand name	
 	public $brand_new_value; //brand name	
 	public $model; //model name
+	public $year;
+	public $mileage;
+	public $color;
 	public $model_new_value; //model name
 	public $cost_price=0;
 	public $price=0;
@@ -255,6 +258,9 @@ class ProductsForm extends CFormModel
 		$model->max_qty = $this->max_qty;
 		$model->brand = trim($this->brand);
 		$model->model = trim($this->model);
+		$model->year = trim($this->year);
+		$model->mileage = trim($this->mileage);
+		$model->color = trim($this->color);
 		$model->taxable = $this->taxable;		
 		$model->id_tax_group = $this->id_tax_group;
 		$model->used = $this->used;

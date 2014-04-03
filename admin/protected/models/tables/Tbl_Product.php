@@ -10,6 +10,9 @@
  * @property string $id_tax_group
  * @property string $brand
  * @property string $model
+ * @property integer $year
+ * @property integer $mileage
+ * @property string $color
  * @property integer $track_inventory
  * @property integer $in_stock
  * @property string $qty

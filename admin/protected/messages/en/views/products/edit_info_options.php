@@ -10,6 +10,9 @@ return array (
  'LABEL_BRAND' => 'Brand',
  'LABEL_RETAIL_PRICE' => 'Retail Price',
  'LABEL_MODEL' => 'Model',
+ 'LABEL_YEAR' => 'Year',
+ 'LABEL_MILEAGE' => 'mileage',
+ 'LABEL_COLOR' => 'Color',
  'LABEL_DISPLAY_ON' => 'Display this product on',
  
  'LABEL_USER_DEFINED_QTY_DESCRIPTION' => 'If you select yes, the customer will be able to enter the qty desired for each product.<br style="margin-bottom:10px;" />Note: To benefit from the discount, all products and quantities required must be met.',
