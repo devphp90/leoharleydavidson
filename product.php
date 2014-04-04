@@ -312,6 +312,9 @@ product_description.meta_description,
 product_description.meta_keywords,
 product.brand,
 product.model,
+product.year,
+product.mileage,
+product.color,
 product.discount_type,
 product.discount,
 product.use_product_current_price,
@@ -3275,22 +3278,25 @@ include("_includes/template/google_analytics.php");?>
 				        	<div class="col-sm-12 product-tabs">
 				                <div class="box-additional box-tabs">
 				                    <dl style="height: 372px;" id="product-tabs" class="product-tabs-inner">				
-				        				<?php if($product['product_type'] or !empty($product['description'])){?>
+                                                                <?php if ($product['product_type'] or !empty($product['description'])) { ?>
 				        				<dt class="tab-title open" id="tab-short_description"><?php echo language('product', 'LABEL_OVERVIEW');?></dt>
-				        				<dd style="display: block; bottom: auto;" class="tab-section">    
-				        					<!-- <h2></h2> -->
-                      				    	<div class="std">
-                                            	<?php if($product['brand'] || $product['model']){?>
-                                                <div style="margin-top:0; padding:0; margin-bottom:10px;">
-												<?php echo $product['brand']?'<div style="margin:0; padding:0; line-height: normal;"><strong>'.language('product','LABEL_BRAND').'</strong> '.$product['brand'].'</div>':'';?>
-                                                <?php echo $product['model']?'<div style="margin:0; padding:0; line-height: normal;"><strong>'.language('product','LABEL_MODEL').'</strong> '.$product['model'].'</div>':'';?>
-                                                </div>
-                                                <?php }?>
-                                                
-                      				    		<?php echo $product['description']?>
-                      				        </div>
-										</dd>
-										<?php }?>			
+                                                                        <dd style="display: block; bottom: auto;" class="tab-section">    
+                                                                            <!-- <h2></h2> -->
+                                                                            <div class="std">
+                                                                                <?php if ($product['brand'] || $product['model'] || $product['year'] || $product['mileage'] || $product['color']) { ?>
+                                                                                    <div style="margin-top:0; padding:0; margin-bottom:10px;">
+                                                                                        <?php echo $product['brand'] ? '<div style="margin:0; padding:0; line-height: normal;"><strong>' . language('product', 'LABEL_BRAND') . '</strong> ' . $product['brand'] . '</div>' : ''; ?>
+                                                                                        <?php echo $product['model'] ? '<div style="margin:0; padding:0; line-height: normal;"><strong>' . language('product', 'LABEL_MODEL') . '</strong> ' . $product['model'] . '</div>' : ''; ?>
+                                                                                        <?php echo $product['year'] ? '<div style="margin:0; padding:0; line-height: normal;"><strong>' . language('product', 'LABEL_YEAR') . '</strong> ' . $product['year'] . '</div>' : ''; ?>
+                                                                                        <?php echo $product['mileage'] ? '<div style="margin:0; padding:0; line-height: normal;"><strong>' . language('product', 'LABEL_MILEAGE') . '</strong> ' . number_format($product['mileage'], 0, ',', ' ') . '<strong> KM</strong></div>' : ''; ?>
+                                                                                        <?php echo $product['color'] ? '<div style="margin:0; padding:0; line-height: normal;"><strong>' . language('product', 'LABEL_COLOR') . '</strong> ' . $product['color'] . '</div>' : ''; ?>
+                                                                                    </div>
+                                                                                <?php } ?>
+
+                                                                                <?php echo $product['description'] ?>
+                                                                            </div>
+                                                                        </dd>
+                                                                <?php }?>			
 										
               							<!-- start: box-reviews -->
               							<?php if($config_site['display_menu_rate_product']) {?>
@@ -3300,9 +3306,9 @@ include("_includes/template/google_analytics.php");?>
                           				    <h2>Customer Reviews</h2>
                           				    <h3 class="review-title"><span class="review-label"> <?php echo language('product','LABEL_REVIEW');?> </span><strong>"<?php echo $product["name"]?>"</strong></h3>
                       				        <?php if ($product['total_rated'] > 0) {?>
-                      				        <div class="rating-box">
-                                                <div class="rating" style="width:<?php echo (int)$product['average_rated']*100/5;?>%;"></div>
-                                            </div>
+                                                            <div class="rating-box">
+                                                                        <div class="rating" style="width:<?php echo (int) $product['average_rated'] * 100 / 5; ?>%;"></div>
+                                                                    </div>
                                             <?php if(isset($arr_save['success'])) {?>
                                      		<div class="messages" style="margin-top: 15px !important;">
                                      			<div class="alert alert-success success-msg">

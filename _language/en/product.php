@@ -83,8 +83,11 @@ return array (
  'LABEL_BE_FIRST_REVIEWS' => 'Be the first to review this product',
   'LABEL_ADD_YOUR_REVIEW' => 'Add Your Review',
   
-  'LABEL_BRAND' => 'Brand:',
- 'LABEL_MODEL' => 'Model:',
+  'LABEL_BRAND' => 'Brand :',
+ 'LABEL_MODEL' => 'Model :',
+ 'LABEL_YEAR' => 'Year :',
+ 'LABEL_MILEAGE' => 'Mileage :',
+ 'LABEL_COLOR' => 'Color :',
  
 ); 
 ?>

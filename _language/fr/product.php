@@ -85,5 +85,8 @@ return array (
  
  'LABEL_BRAND' => 'Marque :',
  'LABEL_MODEL' => 'Modèle :',
+ 'LABEL_YEAR' => 'Année :',
+ 'LABEL_MILEAGE' => 'Kilomètrage :',
+ 'LABEL_COLOR' => 'Couleur :',
 ); 
 ?>
