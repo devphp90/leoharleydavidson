@@ -182,6 +182,7 @@ if ($id_category) {
                         <?php
                         //Verify if the array contain other filter then id_category
                                 if (sizeof($filters = $products->get_filters())) {
+//                                    var_dump($filters);die;
                                 ?>
                                 <div class="filters">		
                                     <div class="title"><?php echo language('catalog', 'TITLE_FILTERING'); ?> &nbsp;<span class="fitering_close_btn"><a href="<?php echo $url_alias; ?>">X</a></span></div>
@@ -229,6 +230,11 @@ if ($id_category) {
 
                                                         $querystr_array['brand'] = $row_filter['brand'];
                                                         break;
+                                                    case 'model':
+                                                        echo '<div class="filtering_item"><div class="filtering_text">' . $row_filter['model'] . '</div><div class="fitering_close_btn"><a href="' . $row_filter['url'] . '">X</a></div></div>';
+
+                                                        $querystr_array['model'] = $row_filter['model'];
+                                                        break;
                                                     case 'price':
                                                         echo '<div class="filtering_item"><div class="filtering_text">' . $row_filter['min'] . ' - ' . $row_filter['max'] . '</div><div class="fitering_close_btn"><a href="' . $row_filter['url'] . '">X</a></div></div>';
 
@@ -252,9 +258,9 @@ if ($id_category) {
                                     </div>  
                                 </div>              
                         <?php }?>        
-                        <?php	
-                                if (!$category_display_type) {
-                        ?>
+                    <?php	
+                        if (!$category_display_type) {
+                    ?>
                     <div class="category-products">
                         <?php if ($total_products) {?>
                         <!-- Start Pagination TOP -->

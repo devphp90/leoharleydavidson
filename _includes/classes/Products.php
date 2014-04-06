@@ -1490,6 +1490,19 @@ class Products
                     'type' => 'brand',
                 );
             }
+            // model
+            if (isset($this->filters['model']) && sizeof($this->filters['model'])) {
+                $tmp_array = $this->filters;
+                unset($tmp_array['model']);
+                unset($tmp_array['id_category']);
+                $querystr = http_build_query($tmp_array);
+
+                $filters[] = array(
+                    'url' => (!empty($querystr) ? '?' . $querystr : ''),
+                    'model' => htmlspecialchars($this->filters['model']),
+                    'type' => 'model',
+                );
+            }
 
             // price range
             if (isset($this->filters['price']) && sizeof($this->filters['price'])) {
