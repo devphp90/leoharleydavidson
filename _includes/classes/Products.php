@@ -643,6 +643,7 @@ class Products
         }
 
         ksort($this->brands);
+        ksort($this->models);
         krsort($this->ratings);
 
         $this->products = $products;
