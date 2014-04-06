@@ -1,4 +1,5 @@
 <?php
+
 require('_includes/config.php');
 $is_product_page = true;
 

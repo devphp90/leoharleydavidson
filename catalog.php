@@ -72,6 +72,7 @@ if ($id_category) {
 	
 	if ($price = $_GET['price']) $filters['price'] = $price; 
 	if ($brand = $_GET['brand']) $filters['brand'] = $brand;
+	if ($model = $_GET['model']) $filters['model'] = $model;
 	if ($rating = $_GET['rating']) $filters['rating'] = $rating;
 	
 	if ($s = trim($_GET['s'])) $filters['s'] = $s;	
@@ -521,12 +522,24 @@ if ($id_category) {
                                         <dd class="odd" style="display:block;">
                                             <ol>
                                                 <?php
-                                                foreach ($brands as $row_brand) {
-                                                    echo '<li><a href="' . $row_brand['url'] . '" ' . ($row_brand['selected'] ? 'class="filter_in"' : '') . '>' . $row_brand['brand'] . ' (' . $row_brand['total'] . ')</a></li>';
-                                                }
+                                                foreach ($brands as $row_brand) { 
+                                                    $models = $products->get_filter_by_model($row_brand['brand']);
                                                 ?>
+                                                    <li>
+                                                        <a href="<?php echo $row_brand['url']; ?>" <?php echo $row_brand['selected'] ? 'class="filter_in"' : ''; ?>><?php echo $row_brand['brand'] ?> (<?php echo $row_brand['total']; ?>)</a>
+                                                        <?php if (sizeof($models)) { ?>
+                                                            <ol style="margin-left: 30px;">
+                                                                <?php foreach ($models as $row_model) { ?>
+                                                                <li>
+                                                                    <a href="<?php echo $row_model['url']; ?>" <?php echo $row_model['selected'] ? 'class="filter_in"' : ''; ?>><?php echo $row_model['model'] ?> (<?php echo $row_model['total']; ?>)</a>
+                                                                </li>
+                                                                <?php } ?>
+                                                            </ol>
+                                                        <?php } ?>
+                                                    </li>
+                                                <?php } ?>
                                             </ol>
-                                        </dd>            		
+                                        </dd>  
                                     <?php } ?>
                                     <!-- END filter by brand -->
 

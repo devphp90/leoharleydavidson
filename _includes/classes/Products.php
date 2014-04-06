@@ -17,6 +17,7 @@ class Products
     private $total_combo = 0;
     private $total_bundled = 0;
     private $brands = array();
+    private $models = array();
     private $ratings = array();
     private $ids = array();
     private $max_price = 0;
@@ -59,6 +60,8 @@ class Products
 
             if (isset($filters['brand']) && $filters['brand'] != '')
                 $where[] = 'product.brand = "' . $this->mysqli->escape_string($filters['brand']) . '"';
+            if (isset($filters['model']) && $filters['model'] != '')
+                $where[] = 'product.model = "' . $this->mysqli->escape_string($filters['model']) . '"';
             if (isset($filters['featured_products']) && $filters['featured_products'] == 1)
                 $where[] = 'product.featured = 1';
             if (isset($filters['new_products']) && $filters['new_products'] == 1)
@@ -351,6 +354,7 @@ class Products
           - top sellers
           - search string
           - brand
+          - model
           - price range
           - ratings
 
@@ -404,6 +408,7 @@ class Products
 		product.product_type,
 		product.sort_order,
 		product.brand,
+		product.model,
 		product.short_desc,
 		product.display_price_exception,
 		product.special_price_to_date,
@@ -614,8 +619,15 @@ class Products
                         $this->brands[$row['brand']] = array('brand' => $row['brand'], 'total' => 1);
                     else
                         ++$this->brands[$row['brand']]['total'];
+                    
+                    if (!empty($row['model'])) {
+                        if (!isset($this->models[$row['model']]))
+                            $this->models[$row['model']] = array('model' => $row['model'], 'total' => 1, 'brand' => $row['brand']);
+                        else
+                            ++$this->models[$row['model']]['total'];
+                    }
                 }
-
+                
                 if ($row['avg_rating'] > 0) {
                     if (!isset($this->ratings[$row['avg_rating']]))
                         $this->ratings[$row['avg_rating']] = array('avg_rating' => $row['avg_rating'], 'total' => 1);
@@ -1137,6 +1149,48 @@ class Products
             return $brands;
         } else
             return array();
+    }
+    
+    public function get_filter_by_model($brand = '')
+    {
+        global $config_site;
+
+        // current filters selected		
+        $filters = $this->filters;
+        // brands 
+        $models = array();
+
+        foreach ($this->models as $row) {
+            // add model to filters list and create query string
+            if (!(!empty($brand) && $row['brand'] != $brand)) {
+                $tmp_array = $filters;
+                $tmp_array['model'] = $row['model'];
+                unset($tmp_array['id_category']);
+                $querystr = http_build_query($tmp_array);
+
+                $models[$row['model']] = array(
+                    'url' => (!empty($querystr) ? '?' . $querystr : ''),
+                    'model' => $row['model'],
+                    'total' => $row['total'],
+                );
+            }
+        }
+
+
+        // if we have filters by brand		
+        if (isset($filters['model'])) {
+            $tmp_array = $filters;
+            unset($tmp_array['model']);
+            $querystr = http_build_query($tmp_array);
+
+            $models[$filters['model']]['url'] = (!empty($querystr) ? '?' . $querystr : '');
+
+            $models[$filters['model']]['selected'] = 1;
+
+            $models = array(0 => $models[$filters['model']]);
+        }
+
+        return $models;
     }
 
     public function get_filter_by_price()
